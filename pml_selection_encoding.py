@@ -34,7 +34,9 @@ def encode_selections(csv_path, col_path):
 # CSV columns should be chain, position, value
 def create_selections(sele_data):
 
-    create_selection = lambda x: f'select {x[0]}_{x[1]}, chain {x[0]} and resi {x[1]}'
+    create_selection = lambda x:(
+        f'select {x[0]}_{x[1]}, chain {x[0]} and resi {x[1]}'
+        )
     selections = [create_selection(i) for i in sele_data]
     
     return selections
@@ -44,7 +46,9 @@ def create_selections(sele_data):
 # Generates lines for .pml script color values
 def set_colors(sele_data):
 
-    set_color = lambda x: f'set_color {x[0]}_{x[1]}_color=[{x[3][0]}, {x[3][1]}, {x[3][2]}]'
+    set_color = lambda x:(
+        f'set_color {x[0]}_{x[1]}_color=[{x[3][0]}, {x[3][1]}, {x[3][2]}]'
+    )
     colors = [set_color(i) for i in sele_data]
 
     return colors

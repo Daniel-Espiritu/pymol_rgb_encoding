@@ -37,24 +37,35 @@ def assign_color(values,
 
 
 
-# Encodes numerical values with an RGB code, given RGB colours assigned to specific values
-# Builds off of assign_color, but can be used for n-colour gradient rather than 2 colour
+# Encodes numerical values with an RGB code,
+# given RGB colours assigned to specific values
+# Builds off of assign_color, but can be used for an
+# n-colour gradient rather than 2 colour
 # values (list): Numerical values to be RGB encoded.
 # breaks (list): Numerical values that are to correspond to a given colour
 # break_colors (nested list): Colours that are to correspond to a given value.
 def assign_ncolor(values, breaks, break_colors, return_dict=False):
     
     if len(breaks) != len(break_colors):
-        return(f'Error: Number of given breaks ({len(breaks)}) does not match number of given colors ({len(break_colors)})')
+        return(
+            f'Error: Number of given breaks ({len(breaks)}) does not'
+            f'match number of given colors ({len(break_colors)})'
+            )
     
     elif any([breaks[i] > breaks[i + 1] for i in range(0, len(breaks) - 1)]):
-        return(f'Error: Ensure that breaks are sorted in ascending value and that desired break colors match')
+        return(
+            f'Error: Ensure that breaks are sorted in ascending'
+            f'value and that desired break colors match'
+            )
     
     elif min(breaks) > min(values):
         return(f'Error: Minimum break larger than minimum value')
     
     elif max(breaks) < max(values):
-        return(f'Error: Maximum break ({max(breaks)}) smaller than maximum value ({max(values)})')
+        return(
+            f'Error: Maximum break ({max(breaks)}) smaller'
+            f'than maximum value ({max(values)})'
+            )
 
     else:
 
@@ -69,9 +80,15 @@ def assign_ncolor(values, breaks, break_colors, return_dict=False):
             max_col = break_colors[i + 1]
             
             if i == (len(breaks) - 2):
-                val_chunk = [j for j in values if (j >= min_val) & (j <= max_val)]
+                val_chunk = [
+                    j for j in values if
+                    (j >= min_val) & (j <= max_val)
+                    ]
             else:
-                val_chunk = [j for j in values if (j >= min_val) & (j < max_val)]
+                val_chunk = [
+                    j for j in values if
+                    (j >= min_val) & (j < max_val)
+                    ]
             
             rgb_chunk = assign_color(
                 values=val_chunk,
@@ -95,7 +112,10 @@ def assign_ncolor(values, breaks, break_colors, return_dict=False):
 
 if __name__ == "__main__":
 
-    print('Example usage of assign_ncolor with a seven color gradient and 40 random values')
+    print('' \
+    'Example usage of assign_ncolor with a seven' \
+    'color gradient and 40 random values'
+    )
 
     seq = np.random.randint(120, size=(50))
 
