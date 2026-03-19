@@ -17,15 +17,15 @@ from cbar import plt_colorbar
 cur_dir = os.path.dirname(__file__)
 
 # Build an absolute path to test data
-test_fpath = os.path.join(cur_dir, "./test.csv")
+test_fpath = os.path.join(cur_dir, "./input_data/test.csv")
 test_fpath = os.path.abspath(test_fpath)
 
 # Build an absolute path to test colour selections
-test_col_fpath = os.path.join(cur_dir, "./test_cols.tsv")
+test_col_fpath = os.path.join(cur_dir, "./input_data/test_cols.tsv")
 test_col_fpath = os.path.abspath(test_col_fpath)
 
 # Build an absolute path for file to write out
-pml_outpath = os.path.join(cur_dir, "./test.pml")
+pml_outpath = os.path.join(cur_dir, "./output_data/test.pml")
 pml_outpath = os.path.abspath(pml_outpath)
 
 with open(pml_outpath, 'w') as f:
@@ -48,7 +48,7 @@ with open(pml_outpath, 'a') as f:
 
 
 # Build an absolute path for color bar plot to write out
-grad_outpath = os.path.join(cur_dir, "./test_gradient.tiff")
+grad_outpath = os.path.join(cur_dir, "./output_data/test_gradient.tiff")
 grad_outpath = os.path.abspath(grad_outpath)
 
 plt_colorbar(test_col_fpath, grad_outpath)

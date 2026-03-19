@@ -68,10 +68,10 @@ if __name__ == '__main__':
 
     test_col_data = np.array(test_col_data, dtype=object)
 
-    test_outpath = os.path.join(cur_dir, "./test.csv")
+    test_outpath = os.path.join(cur_dir, "./input_data/test.csv")
     test_outpath = os.path.abspath(test_outpath)
 
-    test_col_outpath = os.path.join(cur_dir, "./test_cols.tsv")
+    test_col_outpath = os.path.join(cur_dir, "./input_data/test_cols.tsv")
     test_col_outpath = os.path.abspath(test_col_outpath)
 
     with open(test_outpath, 'w') as f:
