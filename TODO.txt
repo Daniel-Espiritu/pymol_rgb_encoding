@@ -1,0 +1,4 @@
+# Modify ./test/test.py and ./test/test_data_creation.py to put input and output
+# data into new directories.
+# Maybe delete old input and output data. New input and output data will be
+# generated when test running test.py and test_data_creation.py.
