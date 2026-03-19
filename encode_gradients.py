@@ -71,7 +71,7 @@ def assign_ncolor(values, breaks, break_colors, return_dict=False):
         Numerical values that are to correspond to a given colour.
     break_colors : nested list
         Colours that are to correspond to a given value.
-    return_dict : bool
+    return_dict : bool, optional
         Boolean if returned data should be in dictionary format (True) or a
         nested list (False).
 

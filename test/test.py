@@ -9,7 +9,6 @@ sys.path.append(
             )))
 from encode_gradients import *
 from pml_selection_encoding import *
-from pml_rgb_encoding import encode_pml_rgb
 from cbar import plt_colorbar
 
 

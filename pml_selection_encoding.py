@@ -8,8 +8,22 @@ from encode_gradients import *
 
 def encode_selections(csv_path, col_path):
     
-    """
-    Obtains encoded colors.
+    """Obtains encoded colors.
+
+    Parameters
+    ----------
+    csv_path : str
+        Path to CSV file where each line details a PDB chain, resi, and a given
+        numerical value to be RGB encoded.
+    col_path : str
+        Path to TSV file where each line details a vale and a corresponding RGB
+        code.
+        
+    Returns
+    -------
+    nested list
+        Each sub list contains a chain ID, resi, and RGB color code obtained
+        from value conversion.
     """
 
     sele_data = pd.read_csv(csv_path, header=None)
@@ -34,9 +48,19 @@ def encode_selections(csv_path, col_path):
 
 def create_selections(sele_data):
 
-    """
-    Generates lines for .pml script residue selections
+    """Generates lines for .pml script residue selections
     CSV columns should be chain, position, value
+
+    Parameters
+    ----------
+    sele_data : nested list
+        Each sub list contains a chain ID, resi, and RGB color code obtained
+        from value conversion. This list is obtained from encode_selections().
+
+    Returns
+    -------
+    list
+        List of strings that can be used to create selections in PyMol.
     """
 
     create_selection = lambda x:(
@@ -50,8 +74,18 @@ def create_selections(sele_data):
 
 def set_colors(sele_data):
 
-    """
-    Generates lines for .pml script color values.
+    """Generates lines for .pml script color values.
+
+    Parameters
+    ----------
+    sele_data : nested list
+        Each sub list contains a chain ID, resi, and RGB color code obtained
+        from value conversion. This list is obtained from encode_selections().
+        
+    Returns
+    -------
+    list
+        List of strings that can be used to create custom colors in PyMol.
     """
 
     set_color = lambda x:(
@@ -65,8 +99,19 @@ def set_colors(sele_data):
 
 def color_selections(sele_data):
 
-    """
-    Generates lines for .pml script residue coloring.
+    """Generates lines for .pml script residue coloring.
+
+    Parameters
+    ----------
+    sele_data : nested list
+        Each sub list contains a chain ID, resi, and RGB color code obtained
+        from value conversion. This list is obtained from encode_selections().
+
+    Returns
+    -------
+    list
+        List of strings that can be used to color selections with custom
+        colors in PyMol.
     """
 
     color_selection = lambda x: f'color {x[0]}_{x[1]}_color, {x[0]}_{x[1]}'
@@ -78,8 +123,22 @@ def color_selections(sele_data):
 
 def write_pml_from_lsts(outpath, append=False, *args):
 
-    """
-    Writes out lists to .pml file.
+    """Writes out lists to .pml file.
+
+    Parameters
+    ----------
+    outpath : str
+        Path of .pml file to be written to.
+    append : bool, optional
+         Determines if file in outpath is to be appended (False) or overwritten
+         (True).
+    *args : nested list
+        Sub lists contain lines (str) to be written to a .pml file.
+
+    Returns
+    -------
+    None
+        Writes out to "outpath".
     """
 
     if append:
@@ -97,3 +156,45 @@ def write_pml_from_lsts(outpath, append=False, *args):
                 f.write(line)
 
             f.write('\n')
+
+
+
+def encode_pml_rgb(data_fpath, color_fpath, pml_outpath, append=False):
+
+    """ Aggregates previous functions for centralizing .pml file creation
+
+    Parameters
+    ----------
+    data_fpath : str
+        Path to CSV file where each line details a PDB chain, resi, and a given
+        numerical value to be RGB encoded.
+    color_fpath : str
+        Path to TSV file where each line details a vale and a corresponding RGB
+        code.
+    pml_outpath : str
+        Path of .pml file to be written to.
+    append : bool, optional
+        Determines if file in outpath is to be appended (False) or overwritten
+        (True).
+
+    Returns
+    -------
+    None
+        Writes out to "Outpath"
+    """
+
+    sele_data = encode_selections(data_fpath, color_fpath)
+
+    selections = create_selections(sele_data)
+
+    colors = set_colors(sele_data)
+
+    colored_selections = color_selections(sele_data)
+
+    write_pml_from_lsts(
+        pml_outpath,
+        append,
+        selections,
+        colors,
+        colored_selections
+        )
