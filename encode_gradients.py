@@ -1,16 +1,33 @@
 # This script is designed to encode numerical values with RGB codes
-# Authored by Daniel Espiritu
-# August 8th, 2025
 import numpy as np
 
 
 
-# Assigns RGB colors to values, given an assigned
-# color for the maximum and minimum values
-# Colors must be in RGB format e.g. [255, 0, 255]
 def assign_color(values,
                  min_color, max_color,
                  min_value=None, max_value=None):
+    
+    """ Assigns RGB colors to a collection of values, on a 2-color gradient.
+
+    Assigns RGB colors to a collection of values (values), given the
+    pre-assigned colors for the minimum (min_color) and maximum (max_color)
+    values. The manually assigned colors must be in RGB format
+    (e.g. [255, 0, 255]).
+
+    Parameters
+    ----------
+    values : list
+        Numerical values to be RGB encoded.
+    min_color : list
+        RGB color code to be assigned to the lowest value
+    max_color : list
+        RGB color code to be assigned to the lowest value
+    
+    Returns
+    -------
+    list
+        Assigned RGB color codes. Color code order matches "values" order.
+    """
     
     # Automatically assign  minimum and maximum values if not explicitly stated
     values = list(values)
@@ -37,15 +54,33 @@ def assign_color(values,
 
 
 
-# Encodes numerical values with an RGB code,
-# given RGB colours assigned to specific values
-# Builds off of assign_color, but can be used for an
-# n-colour gradient rather than 2 colour
-# values (list): Numerical values to be RGB encoded.
-# breaks (list): Numerical values that are to correspond to a given colour
-# break_colors (nested list): Colours that are to correspond to a given value.
 def assign_ncolor(values, breaks, break_colors, return_dict=False):
     
+    """ Assigns RGB colors to a collection of values, on an n-color gradient.
+
+    Assigns RGB colors to a collection of values (values), given RGB colors
+    (break_colors) that are pre-assigned to given values (breaks). This function
+    builds off of assign_color, but can be used for an n-color gradient, rather
+    than a 2 color gradient.
+    
+    Parameters
+    ----------
+    values : list
+        Numerical values to be RGB encoded.
+    breaks : list
+        Numerical values that are to correspond to a given colour.
+    break_colors : nested list
+        Colours that are to correspond to a given value.
+    return_dict : bool
+        Boolean if returned data should be in dictionary format (True) or a
+        nested list (False).
+
+    Returns
+    -------
+    nested list or dict
+        Numerical values and their assigned RGB color code.
+    """
+
     if len(breaks) != len(break_colors):
         return(
             f'Error: Number of given breaks ({len(breaks)}) does not'
