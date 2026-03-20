@@ -1,25 +1,25 @@
-#pypml_rgb_encoding
+# pypml_rgb_encoding
 
-**Description**
+## Description
 pypml_rgb_encoding allows PyMol structure amino acid residues to be
 systematically colored according to a given set of
 numerical values and an assigned color gradient.
 
-**Dependencies**
+## Dependencies
 Python 3+
 PyMol 2+
 
-**Installation**
+## Installation
 pip install pyml_rgb_encoding
 
-**Example Usage**
+## Example Usage
 See ./pyml_rgb_encoding/test/test.sh and ./pyml_rgb_encoding/test/test.py for
 example usage.
 
-**Authors**
+## Authors
 Daniel Espiritu
 
-**License**
+## License
 This project is licensed under an MIT License - 
 see the LICENSE file for details
 
