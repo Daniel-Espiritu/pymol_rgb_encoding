@@ -2,12 +2,11 @@
 # custom gradient colorings for select residues in a structure
 import pandas as pd
 import numpy as np
-from encode_gradients import *
-
+from encode_gradients import assign_ncolor
 
 
 def encode_selections(csv_path, col_path):
-    
+
     """Obtains encoded colors.
 
     Parameters
@@ -18,7 +17,7 @@ def encode_selections(csv_path, col_path):
     col_path : str
         Path to TSV file where each line details a vale and a corresponding RGB
         code.
-        
+
     Returns
     -------
     nested list
@@ -28,22 +27,21 @@ def encode_selections(csv_path, col_path):
 
     sele_data = pd.read_csv(csv_path, header=None)
     sele_data = np.array(sele_data, dtype=object)
-    
+
     col_data = pd.read_table(col_path, header=None)
     col_data[1] = [eval(i) for i in col_data[1]]
     col_data = np.array(col_data)
 
     cols = assign_ncolor(
-        values=sele_data[:,2],
-        breaks=col_data[:,0],
-        break_colors=col_data[:,1],
+        values=sele_data[:, 2],
+        breaks=col_data[:, 0],
+        break_colors=col_data[:, 1],
         return_dict=True
         )
-    
-    sele_data = [list(i) + [cols[i[2]]] for i in sele_data]
-    
-    return sele_data
 
+    sele_data = [list(i) + [cols[i[2]]] for i in sele_data]
+
+    return sele_data
 
 
 def create_selections(sele_data):
@@ -63,13 +61,12 @@ def create_selections(sele_data):
         List of strings that can be used to create selections in PyMol.
     """
 
-    create_selection = lambda x:(
+    create_selection = lambda x: (
         f'select {x[0]}_{x[1]}, chain {x[0]} and resi {x[1]}'
         )
     selections = [create_selection(i) for i in sele_data]
-    
-    return selections
 
+    return selections
 
 
 def set_colors(sele_data):
@@ -81,20 +78,19 @@ def set_colors(sele_data):
     sele_data : nested list
         Each sub list contains a chain ID, resi, and RGB color code obtained
         from value conversion. This list is obtained from encode_selections().
-        
+
     Returns
     -------
     list
         List of strings that can be used to create custom colors in PyMol.
     """
 
-    set_color = lambda x:(
+    set_color = lambda x: (
         f'set_color {x[0]}_{x[1]}_color=[{x[3][0]}, {x[3][1]}, {x[3][2]}]'
     )
     colors = [set_color(i) for i in sele_data]
 
     return colors
-
 
 
 def color_selections(sele_data):
@@ -116,9 +112,8 @@ def color_selections(sele_data):
 
     color_selection = lambda x: f'color {x[0]}_{x[1]}_color, {x[0]}_{x[1]}'
     colored_selections = [color_selection(i) for i in sele_data]
-    
-    return colored_selections
 
+    return colored_selections
 
 
 def write_pml_from_lsts(outpath, append=False, *args):
@@ -156,7 +151,6 @@ def write_pml_from_lsts(outpath, append=False, *args):
                 f.write(line)
 
             f.write('\n')
-
 
 
 def encode_pml_rgb(data_fpath, color_fpath, pml_outpath, append=False):

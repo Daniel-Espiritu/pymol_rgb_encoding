@@ -13,5 +13,6 @@ setup(
     packages=find_packages(
         include=['pypml_rgb_encoding', 'pypml_rgb_encoding.*']
         ),
-    install_requires=['pandas>=2.0.3', 'numpy>=1.24.3','matplotlib>=3.8.3']
+    install_requires=['pandas==2.1.4', 'numpy==1.26.4','matplotlib==3.8.0'],
+    python_requires="==3.11.*"
     )

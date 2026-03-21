@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap, Normalize
 
 
-
 def plt_colorbar(color_fpath, outpath=None):
 
     # Read in color data
@@ -51,13 +50,12 @@ def plt_colorbar(color_fpath, outpath=None):
     )
     cbar.set_ticks(original_breaks)
 
-    if outpath != None:
+    if outpath is not None:
         plt.savefig(outpath, dpi=300, bbox_inches='tight')
         plt.show()
-    
+
     else:
         plt.show()
-
 
 
 if __name__ == '__main__':
