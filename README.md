@@ -6,8 +6,8 @@ systematically colored according to a given set of
 numerical values and an assigned color gradient.
 
 ## Dependencies
-Python 3+,
-PyMol 2+
+Python 3.11.7,
+PyMol 2.5.0
 
 ## Installation
 pip install pyml_rgb_encoding
