@@ -35,7 +35,7 @@ with open(pml_outpath, 'w') as f:
     f.write('bg_color white\n')
     f.write('\n')
     f.write('hide everything, chain M\n')
-    f.write('hide everythin, chain N\n')
+    f.write('hide everything, chain N\n')
     f.write('\n')
 
 encode_pml_rgb(test_fpath, test_col_fpath, pml_outpath, append=True)
