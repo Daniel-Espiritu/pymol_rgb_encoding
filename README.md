@@ -1,7 +1,7 @@
-# pypml_rgb_encoding
+# pyml_rgb_encoding
 
 ## Description
-pypml_rgb_encoding allows PyMol structure amino acid residues to be
+pyml_rgb_encoding allows PyMol structure amino acid residues to be
 systematically colored according to a given set of
 numerical values and an assigned color gradient.
 
