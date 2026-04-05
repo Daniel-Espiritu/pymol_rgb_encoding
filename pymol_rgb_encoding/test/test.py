@@ -1,15 +1,9 @@
 # This script was designed to test this python package
 # Authored by Daniel Espiritu, August 11th, 2025
 import os
-import sys
-sys.path.append(
-    os.path.abspath(
-        os.path.join(
-            os.path.dirname(__file__),'..'
-            )))
-from encode_gradients import *
-from pml_selection_encoding import *
-from cbar import plt_colorbar
+from pymol_rgb_encoding.encode_gradients import *
+from pymol_rgb_encoding.pml_selection_encoding import *
+from pymol_rgb_encoding.cbar import plt_colorbar
 
 
 

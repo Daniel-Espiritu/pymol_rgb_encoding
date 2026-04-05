@@ -2,7 +2,7 @@
 # custom gradient colorings for select residues in a structure
 import pandas as pd
 import numpy as np
-from encode_gradients import assign_ncolor
+from pymol_rgb_encoding.encode_gradients import assign_ncolor
 
 
 def encode_selections(csv_path, col_path):

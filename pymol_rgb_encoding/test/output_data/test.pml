@@ -4,7 +4,7 @@ fetch 7K5Y
 bg_color white
 
 hide everything, chain M
-hide everythin, chain N
+hide everything, chain N
 
 select A_37, chain A and resi 37
 select A_38, chain A and resi 38
