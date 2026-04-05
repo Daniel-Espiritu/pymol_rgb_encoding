@@ -1,9 +1,0 @@
-Metadata-Version: 2.1
-Name: pyml-rgb-encoding
-Version: 0.1.0
-Summary: ('Python package for systematic coloring of PyMol structures according', 'to customizable color gradients.')
-Author: Daniel Espiritu
-License-File: LICENSE
-Requires-Dist: pandas>=2.0.3
-Requires-Dist: numpy>=1.24.3
-Requires-Dist: matplotlib>=3.8.3

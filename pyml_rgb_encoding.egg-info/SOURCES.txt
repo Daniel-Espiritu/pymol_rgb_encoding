@@ -1,9 +1,0 @@
-LICENSE
-MANIFEST.in
-README.md
-setup.py
-pyml_rgb_encoding.egg-info/PKG-INFO
-pyml_rgb_encoding.egg-info/SOURCES.txt
-pyml_rgb_encoding.egg-info/dependency_links.txt
-pyml_rgb_encoding.egg-info/requires.txt
-pyml_rgb_encoding.egg-info/top_level.txt
